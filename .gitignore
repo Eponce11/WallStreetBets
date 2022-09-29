@@ -1,4 +1,4 @@
 
-appsetting.json
-bin
-obj
+/appsetting.json
+/bin
+/obj
