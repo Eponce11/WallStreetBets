@@ -1,0 +1,42 @@
+@model User
+
+<link rel="stylesheet" href="~/css/base.css">
+<link rel="stylesheet" href="~/css/Login_Register.css">
+
+
+<div class="container">
+    <div class="center">
+        <h1>Register</h1>
+        <form asp-controller="User" asp-action="CreateUser">
+            <div class="txt-field">
+                <input asp-for="FirstName" required>
+                <span></span>
+                <label asp-for="FirstName"></label>
+            </div>
+            <div class="txt-field">
+                <input asp-for="LastName" required>
+                <span></span>
+                <label asp-for="LastName"><span asp-validation-for="LastName"></span></label>
+            </div>
+            <div class="txt-field">
+                <input asp-for="Email" required>
+                <span></span>
+                <label asp-for="Email"><span asp-validation-for="Email"></span></label>
+            </div>
+            <div class="txt-field">
+                <input asp-for="Password" required>
+                <span></span>
+                <label asp-for="Password"><span asp-validation-for="Password"></span></label>
+            </div>
+            <div class="txt-field">
+                <input asp-for="ConfirmPassword" required>
+                <span></span>
+                <label asp-for="ConfirmPassword"><span asp-validation-for="ConfirmPassword"></span></label>
+            </div>
+            <button>Register</button>
+            <div class="signup-link">
+                <a href="/">Login Page</a>
+            </div>
+        </form>
+    </div>
+</div>

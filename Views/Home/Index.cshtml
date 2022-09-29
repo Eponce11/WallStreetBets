@@ -1,0 +1,33 @@
+﻿
+
+@model LoginUser
+
+
+<link rel="stylesheet" href="~/css/base.css">
+<link rel="stylesheet" href="~/css/Login_Register.css">
+
+
+<div class="container">
+    <div class="center">
+        <h1>Login</h1>
+        <div class="login-error">
+            <span asp-validation-for="LoginEmail"></span>
+        </div>
+        <form asp-controller="User" asp-action="Login">
+            <div class="txt-field">
+                <input asp-for="LoginEmail" required>
+                <span></span>
+                <label asp-for="LoginEmail"></label>
+            </div>
+            <div class="txt-field">
+                <input asp-for="LoginPassword" required>
+                <span></span>
+                <label asp-for="LoginPassword"></label>
+            </div>
+            <button>Login</button>
+            <div class="signup-link">
+                Not a member? <a href="/register">Signup</a>
+            </div>
+        </form>
+    </div>
+</div>
