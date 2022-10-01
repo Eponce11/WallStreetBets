@@ -1,0 +1,80 @@
+
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 900px;
+
+    display: grid;
+    gap: 15px;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+
+    grid-template-areas:
+        'header header header'
+        'list stocks search'
+        'list stocks search'
+        'list stocks empty'
+        'list stocks wallstreet'
+        'list stocks wallstreet'
+        'list stocks wallstreet'
+        'list stocks wallstreet'
+        'list stocks wallstreet'
+        'list stocks wallstreet';
+
+}
+
+.main > div {
+    border-radius: 10px;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.wallstreet, .list, .stocks {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wallstreet > h1, .list > h1, .stocks > h1 {
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+/*  Header CLasses  */
+.header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+/*  Search CLasses  */
+.search {
+    grid-area: search;
+}
+
+/*  Wallstreet CLasses  */
+.wallstreet {
+    grid-area: wallstreet;
+}
+
+/*  Stocks CLasses  */
+.stocks {
+    grid-area: stocks;
+}
+
+/*  List CLasses  */
+.list {
+    grid-area: list;
+}
