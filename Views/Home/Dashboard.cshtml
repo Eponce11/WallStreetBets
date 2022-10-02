@@ -4,12 +4,30 @@
 
 
 
+
+@{
+    List<Dictionary<string, string>> watchStockList = new List<Dictionary<string, string>>();
+
+    watchStockList.Add(new Dictionary<string, string>(){
+        {"ticker", "APPL"},
+        {"open", "121"},
+        {"close", "121.19"},
+    });
+    watchStockList.Add(new Dictionary<string, string>(){
+        {"ticker", "APPL"},
+        {"open", "121.19"},
+        {"close", "121"},
+    });
+}
+
+<!--  close - open % open * 100 -->
+
 <div class="container">
     <div class="main">
         <div class="header">
-            <h1>Stock Watch</h1>
+            <h1>StockWatch</h1>
             <form asp-controller="User" asp-action="Logout">
-                <button>Logout</button>
+                <button class="logout-btn">Logout</button>
             </form>
         </div>
 
@@ -28,6 +46,7 @@
         
         <div class="list">
             <h1>List</h1>
+            @await Html.PartialAsync("_StockCompact", watchStockList);
         </div>
 
 

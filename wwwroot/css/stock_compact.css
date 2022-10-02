@@ -1,0 +1,46 @@
+
+.individual-stock {
+    width: 100%;
+    height: 7%;
+    background-color: palegreen;
+    border-bottom: 1px solid navy;
+    display: flex;
+}
+
+
+
+.logo-container, .price, .ticker {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+
+.ticker > h4 {
+    margin-left: 9%;
+}
+
+.price {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.price > h4, .price > p {
+    margin-right: 9%;
+}
+
+.logo-container {
+    justify-content: center;
+}
+
+.fake-img {
+    background-color: orange;
+    width: 90%;
+    height: 100%
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
