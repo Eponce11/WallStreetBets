@@ -6,7 +6,7 @@
 
 @foreach (Dictionary<string, string> stock in @Model)
 {
-    <div class="individual-stock">
+    <div class="individual-stock" onclick="openFullView()">
         <div class="ticker">
             <h4>@stock["ticker"]</h4>
         </div>
@@ -31,3 +31,4 @@
         </div>
     </div>
 }
+

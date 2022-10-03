@@ -7,6 +7,10 @@
     display: flex;
 }
 
+.individual-stock:hover {
+    cursor: pointer;
+}
+
 
 
 .logo-container, .price, .ticker {
@@ -44,3 +48,10 @@ img {
     width: 100px;
     height: 100px;
 }
+
+
+
+
+
+
+
