@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WallStreetBets.Models;
+using WallStreetBets.Api;
 
 namespace WallStreetBets.Controllers
 {
@@ -14,6 +15,10 @@ namespace WallStreetBets.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private MyContext _db;
+
+        private ApiFunctions apiFunctions = new ApiFunctions();
+        private List<String> commonTickers = new List<string>()
+        {"AAPL", "ATVI", "MSFT", "GT", "PG"};
 
         public HomeController(ILogger<HomeController> logger, MyContext context)
         {
@@ -36,22 +41,13 @@ namespace WallStreetBets.Controllers
 
 
         [HttpGet("/dashboard")]
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
             if (!isLoggedIn) { return RedirectToAction("Index"); }
 
-
-            List<Dictionary<string, string>> watchStockList = new List<Dictionary<string, string>>();
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121"},
-                    {"close", "121.19"},
-                });
-                
-                
-                
-
-            return View("Dashboard", watchStockList);
+            List<Stock> commonStockList = await apiFunctions.GetStocks(commonTickers);
+            
+            return View("Dashboard", commonStockList);
         }
 
 

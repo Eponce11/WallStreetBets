@@ -11,7 +11,8 @@ namespace WallStreetBets.Models
         public MyContext(DbContextOptions options) : base(options) { }
 
 
-        public DbSet<User> Users {get; set;}
+        public DbSet<User> Users { get; set; }
+        public DbSet<ListStock> ListStocks { get; set; }
 
     }
 }
