@@ -47,66 +47,7 @@ namespace WallStreetBets.Controllers
                     {"open", "121"},
                     {"close", "121.19"},
                 });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
-                watchStockList.Add(new Dictionary<string, string>(){
-                    {"ticker", "APPL"},
-                    {"open", "121.19"},
-                    {"close", "121"},
-                });
+                
                 
                 
 
