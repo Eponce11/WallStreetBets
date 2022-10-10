@@ -14,8 +14,8 @@ namespace WallStreetBets.Models
         [Required]
         public string Ticker { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
 
         public int UserId { get; set; }

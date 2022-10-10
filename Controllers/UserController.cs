@@ -14,7 +14,13 @@ namespace WallStreetBets.Controllers
         public MyContext _db;
         public UserController(MyContext db) { _db = db; }
 
-        private int? uid { get{ return HttpContext.Session.GetInt32("UserId");} }
+        private int? uid
+        { 
+            get
+            { 
+                return HttpContext.Session.GetInt32("UserId");
+            } 
+        }
         private bool isLoggedIn { get{return uid != null;} }
 
 

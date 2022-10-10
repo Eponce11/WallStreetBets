@@ -9,14 +9,13 @@ namespace WallStreetBets.Api
 {
     public class ApiFunctions
     {
-        private HttpClient httpClient = new HttpClient();
 
         public async Task<List<Stock>> GetStocks(List<String> stockTickers)
         {
 
             List<Stock> stockList = new List<Stock>();
 
-            using (httpClient)
+            using (HttpClient httpClient = new HttpClient())
             {
                 foreach (String ticker in stockTickers)
                 {
@@ -32,6 +31,7 @@ namespace WallStreetBets.Api
             return stockList;
         }
         
+
 
         
     }

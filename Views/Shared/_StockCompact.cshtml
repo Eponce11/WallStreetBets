@@ -1,10 +1,9 @@
 
-
 @model List<Stock>
 
 <link rel="stylesheet" href="~/css/stock_compact.css">
 
-@foreach (Stock stock in Model)
+@foreach (Stock stock in @Model)
 {
     <div class="individual-stock" onclick="openFullView()">
         <div class="ticker">
