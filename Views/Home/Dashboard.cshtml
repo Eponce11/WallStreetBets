@@ -1,9 +1,10 @@
 
-@model List<Dictionary<string,string>>
+@model List<Stock>
 
 <link rel="stylesheet" href="~/css/base.css">
 <link rel="stylesheet" href="~/css/dashboard.css">
 <link rel="stylesheet" href="~/css/modal.css">
+<link rel="stylesheet" href="~/css/redditstock_compact.css">
 
 
 
@@ -18,51 +19,61 @@
 
         <div class="wallstreet">
             <h1>Wallstreetbets</h1>
+            @foreach (RedditStock redditStock in ViewBag.redditStockList)
+            {
+                <div class="reddit-individual-stock">
+                    <h4>@redditStock.Ticker</h4>
+                    <div class="reddit-num-comments">
+                        <h4>@redditStock.Sentiment</h4>
+                    </div>
+                    <div class="reddit-sentiment">
+                        <h4>@redditStock.No_Of_Comments</h4>
+                    </div>
+                </div>
+            }
         </div>
 
         <div class="search">
             <h1>Search</h1>
             <div class="search-error">
-                <p>Ticker Not Found</p>
+                <p id="search-error-comment"></p>
             </div>
             <div class="search-field">
-                <input type="text" required>
+                <input type="text" id="search-ticker-input" required>
                 <span></span>
                 <label>Ticker</label>
             </div>
-            <form action="">
-                <button>Search</button>
-            </form>
+            <button onclick="searchTicker()">Search</button>
         </div>
 
         <div class="stocks">
             <h1>Common Stocks</h1>
-            @await Html.PartialAsync("_StockCompact", @Model);
+            @await Html.PartialAsync("_StockCompact", Model)
         </div>
         
         <div class="list">
             <h1>List</h1>
-            @await Html.PartialAsync("_StockCompact", @Model);
+            @await Html.PartialAsync("_StockCompact", Model, ViewBag.watchStockList)
         </div>
     </div>
 </div>
 
-<div class="bg-modal">
+<div class="bg-modal" id="bg-modal">
     <div class="modal-content">
         <div class="close" onclick="closeFullView()">+</div>
-        <div class=""></div>
-        <h1>APPL</h1>
+        <div class="" onclick="addRemoveStock('AAPL')">T</div>
+        <h1 id="modal-ticker"></h1>
         <div class="modal-fake-img"></div>
         <div class="modal-info">
             <div>
-                <h3>Open: 300</h3>
-                <h3>Close: 500</h3>
-                <h3>+100%</h3>
+                <h3 id="modal-open">Open: 300</h3>
+                <h3 id="modal-close">Close: 500</h3>
+                <h3 id="modal-percentage">+100%</h3>
             </div>
             <div>
-                <h3>High: 500</h3>
-                <h3>Low: 500</h3>
-                <h3>Volume: 40000000</h3>
+                <h3 id="modal-high">High: 500</h3>
+                <h3 id="modal-low">Low: 500</h3>
+                <h3 id="modal-volume">Volume: 40000000</h3>
             </div>
         </div>
     </div>    

@@ -1,25 +1,24 @@
 
-
-@model List<Dictionary<string, string>>
+@model List<Stock>
 
 <link rel="stylesheet" href="~/css/stock_compact.css">
 
-@foreach (Dictionary<string, string> stock in @Model)
+@foreach (Stock stock in @Model)
 {
     <div class="individual-stock" onclick="openFullView()">
         <div class="ticker">
-            <h4>@stock["ticker"]</h4>
+            <h4>@stock.Symbol</h4>
         </div>
         <div class="logo-container">
             <div class="fake-img"></div>
         </div>
         <div class="price">
             @{
-                float openPrice = float.Parse(stock["open"]);
-                float closePrice = float.Parse(stock["close"]);
+                float openPrice = float.Parse(stock.Open);
+                float closePrice = float.Parse(stock.Close);
                 float percentage = ((closePrice - openPrice) / openPrice) * 100;
             }
-            <h4>$@stock["close"]</h4>
+            <h4>$@stock.Close</h4>
             @if(percentage < 0)
             {
                 <p style="color: red;">@percentage%</p>
