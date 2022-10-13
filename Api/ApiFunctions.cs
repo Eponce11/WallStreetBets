@@ -31,6 +31,21 @@ namespace WallStreetBets.Api
             return stockList;
         }
         
+        public async Task<List<RedditStock>> GetRedditStocks()
+        {
+            List<RedditStock> redditStockList = new List<RedditStock>();
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://tradestie.com/api/v1/apps/reddit"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    redditStockList = JsonConvert.DeserializeObject<List<RedditStock>>(apiResponse);
+                }
+            }
+            return redditStockList;
+        }
+        
 
 
         

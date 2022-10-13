@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="~/css/base.css">
 <link rel="stylesheet" href="~/css/dashboard.css">
 <link rel="stylesheet" href="~/css/modal.css">
+<link rel="stylesheet" href="~/css/redditstock_compact.css">
 
 
 
@@ -18,6 +19,18 @@
 
         <div class="wallstreet">
             <h1>Wallstreetbets</h1>
+            @foreach (RedditStock redditStock in ViewBag.redditStockList)
+            {
+                <div class="reddit-individual-stock">
+                    <h4>@redditStock.Ticker</h4>
+                    <div class="reddit-num-comments">
+                        <h4>@redditStock.Sentiment</h4>
+                    </div>
+                    <div class="reddit-sentiment">
+                        <h4>@redditStock.No_Of_Comments</h4>
+                    </div>
+                </div>
+            }
         </div>
 
         <div class="search">
@@ -35,12 +48,12 @@
 
         <div class="stocks">
             <h1>Common Stocks</h1>
-            @await Html.PartialAsync("_StockCompact", @Model);
+            @await Html.PartialAsync("_StockCompact", Model)
         </div>
         
         <div class="list">
             <h1>List</h1>
-            @await Html.PartialAsync("_StockCompact");
+            @await Html.PartialAsync("_StockCompact", Model, ViewBag.watchStockList)
         </div>
     </div>
 </div>

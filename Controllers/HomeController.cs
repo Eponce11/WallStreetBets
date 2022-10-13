@@ -61,6 +61,10 @@ namespace WallStreetBets.Controllers
             List<Stock> watchStockList = await apiFunctions.GetStocks(listStockTickers);
             ViewBag.watchStockList = watchStockList;
 
+
+            List<RedditStock> redditStocks = await apiFunctions.GetRedditStocks();
+            IEnumerable<RedditStock> redditStockList = redditStocks.Take(6);
+            ViewBag.redditStockList = redditStockList;
             
 
             List<Stock> commonStockList = await apiFunctions.GetStocks(commonTickers);
