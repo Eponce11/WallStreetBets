@@ -1,15 +1,30 @@
 
+// opens the modal with all the stock info passed in
+function openModalView(stock) {
+    const openPrice = parseFloat(stock.open);
+    const closePrice = parseFloat(stock.close);
+    const percentage = ((closePrice - openPrice) / openPrice) * 100;
 
-function openFullView() {
-    
-    document.querySelector(".bg-modal").style.display = 'flex';
+    $("#modal-ticker").html(` ${stock.symbol}`);
+    $("#modal-open").html(`Open: $${stock.open}`);
+    $("#modal-close").html(`Close: $${stock.close}`);
+    $("#modal-percentage").html(`${percentage}%`);
+    $("#modal-high").html(`High: $${stock.high}`);
+    $("#modal-low").html(`Low: $${stock.low}`);
+    $("#modal-volume").html(`Volume: ${stock.volume}`);
+
+    $("#bg-modal").css("display", "flex");
 }
 
-function closeFullView() {
+// closes the modal view
+function closeModalView() {
     document.querySelector(".bg-modal").style.display = 'none';
 }
 
-function addRemoveStock(ticker) {
+// api calls the backend route that adds or removes the stock from the users list
+function addRemoveStock() {
+
+    const ticker = $("#search-ticker-input").val().toUpperCase();
     $.ajax({
         type: "POST",
         url: "/watchlistaddremove",
@@ -19,7 +34,7 @@ function addRemoveStock(ticker) {
     })
 }
 
-
+// api calls the backend route that returns a stock if the ticker that was passed in was found
 function searchTicker() {
 
     const ticker = $("#search-ticker-input").val().toUpperCase();
@@ -29,27 +44,15 @@ function searchTicker() {
         url: "/searchstock",
         data: {ticker: ticker},
         success: function (response) {
+            // if the stock was not found
             if (response.symbol === undefined){
                 $("#search-error-comment").html("Ticker Not Found");
                 return
             }
 
+            // if the stock was found
             $("#search-error-comment").html("");
-
-            const openPrice = parseFloat(response.open);
-            const closePrice = parseFloat(response.close);
-            const percentage = ((closePrice - openPrice) / openPrice) * 100;
-
-            $("#modal-ticker").html(` ${response.symbol}`);
-            $("#modal-open").html(`Open: $${response.open}`);
-            $("#modal-close").html(`Close: $${response.close}`);
-            $("#modal-percentage").html(`${percentage}%`);
-            $("#modal-high").html(`High: $${response.high}`);
-            $("#modal-low").html(`Low: $${response.low}`);
-            $("#modal-volume").html(`Volume: ${response.volume}`);
-
-            $("#bg-modal").css("display", "flex");
-
+            openModalView(response);
         },
         error: function (error) {
             console.log(error);

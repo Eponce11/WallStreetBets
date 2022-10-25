@@ -3,9 +3,23 @@
 
 <link rel="stylesheet" href="~/css/stock_compact.css">
 
-@foreach (Stock stock in @Model)
+@foreach (Stock stock in Model)
 {
-    <div class="individual-stock" onclick="openFullView()">
+    double openPrice = float.Parse(stock.Open);
+    double closePrice = float.Parse(stock.Close);
+    double percentage = ((closePrice - openPrice) / openPrice) * 100;
+
+    percentage = Math.Round(percentage, 2);
+    
+    <div class="individual-stock" onclick="openModalView({
+        symbol: '@(stock.Symbol)',
+        open: '@(stock.Open)',
+        close: '@(stock.Close)',
+        volume: '@(stock.Volume)',
+        logo: '@(stock.Logo)',
+        low: '@(stock.Low)',
+        high: '@(stock.High)'
+    })">
         <div class="ticker">
             <h4>@stock.Symbol</h4>
         </div>
@@ -13,11 +27,6 @@
             <div class="fake-img"></div>
         </div>
         <div class="price">
-            @{
-                float openPrice = float.Parse(stock.Open);
-                float closePrice = float.Parse(stock.Close);
-                float percentage = ((closePrice - openPrice) / openPrice) * 100;
-            }
             <h4>$@stock.Close</h4>
             @if(percentage < 0)
             {

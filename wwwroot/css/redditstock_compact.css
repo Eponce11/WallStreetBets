@@ -5,9 +5,12 @@
     height: 13%;
     background-color: palegreen;
     border-bottom: 1px solid navy;
-    display: flex;
 }
 
 .reddit-individual-stock > h4 {
-    text-align: center;
+
 }
+
+
+
+

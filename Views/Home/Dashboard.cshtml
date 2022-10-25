@@ -1,4 +1,3 @@
-
 @model List<Stock>
 
 <link rel="stylesheet" href="~/css/base.css">
@@ -22,13 +21,17 @@
             @foreach (RedditStock redditStock in ViewBag.redditStockList)
             {
                 <div class="reddit-individual-stock">
+
                     <h4>@redditStock.Ticker</h4>
-                    <div class="reddit-num-comments">
-                        <h4>@redditStock.Sentiment</h4>
+                    <div>
+                        <div class="reddit-num-comments">
+                            <h4>@redditStock.Sentiment</h4>
+                        </div>
+                        <div class="reddit-sentiment">
+                            <h4>@redditStock.No_Of_Comments</h4>
+                        </div>
                     </div>
-                    <div class="reddit-sentiment">
-                        <h4>@redditStock.No_Of_Comments</h4>
-                    </div>
+
                 </div>
             }
         </div>
@@ -48,20 +51,20 @@
 
         <div class="stocks">
             <h1>Common Stocks</h1>
-            @await Html.PartialAsync("_StockCompact", Model)
+            @await Html.PartialAsync("_StockCompact", (List<Stock>) @ViewBag.commonStockList)
         </div>
         
         <div class="list">
             <h1>List</h1>
-            @await Html.PartialAsync("_StockCompact", Model, ViewBag.watchStockList)
+            @await Html.PartialAsync("_StockCompact", (List<Stock>) @ViewBag.watchStockList)
         </div>
     </div>
 </div>
 
 <div class="bg-modal" id="bg-modal">
     <div class="modal-content">
-        <div class="close" onclick="closeFullView()">+</div>
-        <div class="" onclick="addRemoveStock('AAPL')">T</div>
+        <div class="close" onclick="closeModalView()">+</div>
+        <div class="" onclick="addRemoveStock()">T</div>
         <h1 id="modal-ticker"></h1>
         <div class="modal-fake-img"></div>
         <div class="modal-info">
